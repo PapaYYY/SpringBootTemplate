@@ -4,8 +4,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ua.mamaiev.springboottemplate.model.Author;
 import ua.mamaiev.springboottemplate.model.Book;
+import ua.mamaiev.springboottemplate.model.Publisher;
 import ua.mamaiev.springboottemplate.repositories.AuthorRepository;
 import ua.mamaiev.springboottemplate.repositories.BookRepository;
+import ua.mamaiev.springboottemplate.repositories.PublisherRepository;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
@@ -13,10 +15,15 @@ public class BootStrapData implements CommandLineRunner {
     private final AuthorRepository authorRepository;
     
     private final BookRepository bookRepositiry;
+    
+    private final PublisherRepository publisherRepository;
 
-    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepositiry) {
+    public BootStrapData(AuthorRepository authorRepository, 
+                         BookRepository bookRepositiry, 
+                         PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepositiry = bookRepositiry;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -37,8 +44,15 @@ public class BootStrapData implements CommandLineRunner {
         authorRepository.save(rod);
         bookRepositiry.save(noEJB);
 
+        Publisher publisher1 = new Publisher("Publisher1",
+                "line1",
+                "city1",
+                "state1",
+                "zip1");
+        publisherRepository.save(publisher1);
+
         System.out.println("Started in bootstrap");
-        System.out.printf("Number of books: " + bookRepositiry.count());
-        
+        System.out.println("Number of books: " + bookRepositiry.count());
+        System.out.println("Number of publishers: " + publisherRepository.count());
     }
 }
