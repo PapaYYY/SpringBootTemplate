@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import ua.mamaiev.springboottemplate.model.Book;
 
 
-public interface BookRepositiry extends CrudRepository<Book, Long> {
+public interface BookRepository extends CrudRepository<Book, Long> {
 }

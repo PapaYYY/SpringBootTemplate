@@ -5,16 +5,16 @@ import org.springframework.stereotype.Component;
 import ua.mamaiev.springboottemplate.model.Author;
 import ua.mamaiev.springboottemplate.model.Book;
 import ua.mamaiev.springboottemplate.repositories.AuthorRepository;
-import ua.mamaiev.springboottemplate.repositories.BookRepositiry;
+import ua.mamaiev.springboottemplate.repositories.BookRepository;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
     
     private final AuthorRepository authorRepository;
     
-    private final BookRepositiry bookRepositiry;
+    private final BookRepository bookRepositiry;
 
-    public BootStrapData(AuthorRepository authorRepository, BookRepositiry bookRepositiry) {
+    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepositiry) {
         this.authorRepository = authorRepository;
         this.bookRepositiry = bookRepositiry;
     }
